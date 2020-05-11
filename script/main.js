@@ -24,9 +24,8 @@ $(document).ready(function () {
     var source = $('#entry-template').html();
     var template = Handlebars.compile(source);
 
-
-    // prova
-    printListItems(template, [{text: 'prova', id: '99'}])
+    // on page load, print every stored task
+    getAll(template, getAjaxSetting('GET'))
 
     // activating user interation
     $('.my-list').on('dblclick', '.list-item', function() {
@@ -34,10 +33,7 @@ $(document).ready(function () {
         $(this).children($('.item-button')).toggle()
     })
 
-    //callGet
-    getAll(template, getAjaxSetting('GET'))
-
-    //new 
+    // allows user to add new task
     $(document).keyup(function (e) { 
         if (e.which == 13 || e.keyCode == 13) {
             $.ajax({
@@ -48,15 +44,13 @@ $(document).ready(function () {
                 getAll(template, getAjaxSetting('GET'))
                 $('#new-input').val('') 
                 $('#new-input').blur()
-                })
+            }).fail(error => console.log(error))
         }})
-    
 
-    //delete
+    // allows user to delete task
     $('.my-list').on('click', '.item-button', function() {
         var id = $(this).parent().data('id')
         $.ajax(getAjaxSetting('DELETE', id))
-            .done(() => {
-                getAll(template, getAjaxSetting('GET'))})
+            .done(() => {getAll(template, getAjaxSetting('GET'))})
     })
 });
