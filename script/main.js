@@ -36,16 +36,19 @@ $(document).ready(function () {
     // allows user to add new task
     $(document).keyup(function (e) { 
         if (e.which == 13 || e.keyCode == 13) {
-            $.ajax({
-                url: 'http://157.230.17.132:3025/todos/',
-                method: 'POST',
-                data: {text: $('#new-input').val()}
-            }).done(() => {
-                getAll(template, getAjaxSetting('GET'))
-                $('#new-input').val('') 
-                $('#new-input').blur()})
-            .fail(error => console.log(error))
-        }})
+            if ($('#new-input').val().trim()) {
+                    $.ajax({
+                    url: 'http://157.230.17.132:3025/todos/',
+                    method: 'POST',
+                    data: {text: $('#new-input').val()}
+                }).done(() => {
+                    getAll(template, getAjaxSetting('GET'))
+                    $('#new-input').val('') 
+                    $('#new-input').blur()})
+                .fail(error => console.log(error))
+            }
+        }
+    })
 
     // allows user to delete task
     $('.my-list').on('click', '.item-button', function() {
