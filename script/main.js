@@ -43,8 +43,8 @@ $(document).ready(function () {
             }).done(() => {
                 getAll(template, getAjaxSetting('GET'))
                 $('#new-input').val('') 
-                $('#new-input').blur()
-            }).fail(error => console.log(error))
+                $('#new-input').blur()})
+            .fail(error => console.log(error))
         }})
 
     // allows user to delete task
@@ -52,5 +52,6 @@ $(document).ready(function () {
         var id = $(this).parent().data('id')
         $.ajax(getAjaxSetting('DELETE', id))
             .done(() => {getAll(template, getAjaxSetting('GET'))})
+            .fail(error => console.log(error))
     })
 });
