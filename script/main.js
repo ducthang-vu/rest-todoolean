@@ -1,7 +1,3 @@
-console.log('main.js is working')
-console.log('$')
-
-
 function getAjaxSetting(method, id='') {
     return {
         url: 'http://157.230.17.132:3025/todos/' + id,
@@ -48,15 +44,17 @@ $(document).ready(function () {
                 url: 'http://157.230.17.132:3025/todos/',
                 method: 'POST',
                 data: {text: $('#new-input').val()}
-            }).done(getAll(template, getAjaxSetting('GET')))
-            }
-        })
-
+            }).done(() => {
+                getAll(template, getAjaxSetting('GET'))
+                $('#new-input').val('') 
+                $('#new-input').blur()
+                })
+        }})
+    
 
     //delete
     $('.my-list').on('click', '.item-button', function() {
         var id = $(this).parent().data('id')
-        console.log(id)
         $.ajax(getAjaxSetting('DELETE', id))
             .done(() => {
                 getAll(template, getAjaxSetting('GET'))})
