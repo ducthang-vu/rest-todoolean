@@ -1,88 +1,171 @@
-/* GENERAL */
-html {
-    scroll-behavior: smooth;
-}
-
-
+/*  GENERAL */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-} 
-
-body {
-    font-family: 'Roboto Mono', monospace;
 }
 
-button,
-button:focus,
-a,
-input,
-label {
-    color: inherit;
+body {
+    font-family: 'Roboto', sans-serif;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    font-size: 120%;
+}
+
+a {
+    text-decoration: none;
     background: inherit;
-    cursor: pointer;
-    outline: 0;
+    color: inherit;
+}
+
+li {
+    list-style: none;
 }
 
 
 /* UTILITIES */
 .container {
-    padding: 10px;
-    width: 90%;
-    max-width: 1100px;
+    width: 1140px;
+    max-width: 90%;
+    padding: 15px;
 }
 
 .block {
     display: block;
 }
 
-.no-display {
+.display-no {
     display: none;
 }
 
-.inline-fl-w {
-    display: inline-flex;
-    flex-wrap: wrap;
-}
-
-.flex-w {
-    display: flex;
-    flex-wrap: wrap;
+.in-block {
+    display: inline-block;
 }
 
 .flex {
     display: flex;
 }
 
-.text-small {
-    font-size: 70%;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.text-left {
-    text-align: left;
-}
-
-.text-right {
-    text-align: right;
-}
-
-.central {
-    margin: auto;
-}
-
-.absolute {
-    position: absolute;
+.in-flex {
+    display: inline-flex;
 }
 
 .relative {
     position: relative;
 }
 
-.in-block {
-    display: inline-block;
+.absolute {
+    position: absolute;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.central {
+    margin: auto;
+}
+
+.black {
+    background: #000;
+}
+
+.darkred-color {
+    color: darkred;
+}
+
+.green {
+    background: green;
+}
+
+.white-color {
+    color: white;
+}
+
+.template {
+    display: none;
+}
+
+
+/* MAIN */
+main {
+    flex-grow: 1;
+}
+
+    .input-box {
+        height: 50px;
+    }
+
+        #new-input {
+            padding: 4px 15px;
+            border: 0;
+            outline: 0;
+            border: 2px solid transparent;
+        }
+
+        #new-input:focus {
+            border-bottom: 2px solid yellow;
+        }
+
+        .input-box .instruction {
+            opacity:0;
+            padding: 5px;
+            font-style: oblique;
+            font-size: 60%;
+        }
+
+        #new-input:focus + .instruction {
+            opacity: 0.8;
+            transition: opacity 1s linear;
+        }
+
+
+    .list-section {
+        margin-top: 45px;
+    }
+
+        .my-list {
+            width: 300px;
+            max-width: 90%;
+            min-height: 220px;
+        }
+
+            .list-item {
+                margin: 5px;
+                padding: 5px 15px;
+                justify-content: space-between;
+                align-items: center;
+                border-left: 5px solid yellow;
+            }
+
+            .list-item.completed {
+                color: gray;
+                text-decoration: line-through;
+                border-left: 5px solid darkred;
+            }
+
+                .list-item button {
+                    font-family: 'Roboto', sans-serif;
+                    background: inherit;
+                    color: darkred;
+                    outline: none;
+                    cursor: pointer;
+                    border: 0;
+                    font-size: 100%;
+                }
+        
+        .list-section .instruction {
+            margin-top: 25px;
+            padding: 5px;
+            font-style: oblique;
+            font-size: 60%;
+        }
+
+
+/* FOOTER */
+footer {
+    font-style: italic;
+    font-size: 5px;
+    text-align: right;
 }

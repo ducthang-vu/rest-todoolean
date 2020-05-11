@@ -9,16 +9,46 @@
 </head>
 <body>
     
-
-
+    <body class="flex black white-color">
+        <header>
+            <div class="container central text-center">
+                <h1>ToDo!</h1>
+                <p>We're here to remind you.</p>
+            </div>
+        </header>
+        
+        <main>
+            <div class="container central text-center">
+                <section class="input-section">
+                    <div class="input-box">
+                        <input id="new-input" type="text" placeholder="Enter a new task">
+                        <p class="instruction">Press "enter" to add task</p>
+                    </div>
+                </section>
+    
+                <section class="list-section">
+                    <ul class="my-list in-block">
+                        <!-- SEE TEMPLATE AT THE BOTTOM -->
+                    </ul>
+                    <p class="instruction">Double click on a task to mark it as completed.<br>Completed tasks can be deleted.<br>Double click again to restore a task</p>
+                </section>
+            </div>
+        </main>
+    
+        <footer>
+            <div class="container">
+                <p>Made by Thang<br>16/04/2020</p>
+            </div>
+        </footer>
+    
     <!-- TEMPLATE-->
     <script id="entry-template" type="text/x-handlebars-template">
-        <div class="entry">
-            <h1>{{title}}</h1>
-            <div class="body">
-            {{body}}
-            </div>
-        </div>
+        <li class="list-item flex">
+            {{text}}
+            <button class="item-button display-no">
+                <i class="fas fa-trash-alt display-no"></i>
+            </button>
+        </li>
     </script>
 
     <!-- SCRIPT -->
